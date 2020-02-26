@@ -15,7 +15,7 @@ function promptUser() {
         {
             type: "input",
             name: "screenshot",
-            message: "Input screenshot url."
+            message: "Input screenshot path."
         },
         {
             type: "input",
@@ -41,7 +41,7 @@ function promptUser() {
         },
         {
             type: "input",
-            name: "Usage",
+            name: "usage",
             message: "What can this application be used for?"
         },
         {
@@ -77,17 +77,53 @@ function promptUser() {
     ]);
 }
 
+// let email;
+// let profileImg;
 
-function githubGet(answers) {
-    const username = answers.username;
-    const queryUrl = `https://api.github.com/users/${username}`;
+// function githubGet(answers) {
+//     const username = answers.username;
+//     const queryUrl = `https://api.github.com/users/${username}`;
 
-    axios.get(queryUrl).then(function(res) {
-        let profileImg = res.data.avatar_url;
-        let email = res.data.email;
-        let gitArr = [`${email}`,`${profileImg}`];
-        return gitArr;
-    })
+//     axios.get(queryUrl).then((res) => {
+//         profileImg = res.data.avatar_url;
+//         email = res.data.email;
+//         return profileImg, email
+//     })
+
+//     return {
+//         email: email,
+//         img: profileImg
+//        }
+
+// };
+
+function generateReadMe(answers, gitObj) {
+    return `
+![last commit](https://img.shields.io/github/last-commit/sldelay/README_generator-)
+# ${answers.project}
+${answers.description}
+![alt text](${answers.screenshot})
+## Table of Contents
+- [Installation](#Installation)
+- [Usage](#Usage)
+- [Licensing](#Licensing)
+- [Contribution](#Contribution)
+- [Testing](#Testing)
+- [Questions](#Questions)
+## Installation 
+${answers.installation}
+## Usage
+${answers.usage}
+## Licensing
+${answers.license}
+## Contribution
+${answers.contribute}
+## Testing
+${answers.testing}
+## Questions
+${gitObj.contact}
+![alt txt](${gitObj.img})
+    `
 }
 
 async function init() {
@@ -96,11 +132,25 @@ async function init() {
 
         const answers = await promptUser();
 
-        const gitArr = await githubGet(answers);
+        const username = answers.username;
+        const queryUrl = `https://api.github.com/users/${username}`;
 
-        const README = generateReadMe(answers, gitArr);
+        const gitObj = await axios.get(queryUrl).then((res) => {
+            profileImg = res.data.avatar_url;
+            email = res.data.email;
+            return {
+                contact: email,
+                img: profileImg
+            }
+        })
+
+        // const gitObj = await githubGet(answers);
+
+        const README = await generateReadMe(answers, gitObj);
 
         await writeFileAsync("README.md", README);
+
+        console.log("Successfully wrote to README.md");
     } catch (err) {
         console.log(err);
     }
@@ -110,6 +160,4 @@ async function init() {
 init()
 
 
-
-// https://img.shields.io/github/last-commit/sldelay/README_generator-
 
