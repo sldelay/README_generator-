@@ -1,0 +1,24 @@
+{
+  "name": "README_generator-",
+  "version": "1.0.0",
+  "description": "UNH Bootcamp Week 9 HW",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sldelay/README_generator-.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sldelay/README_generator-/issues"
+  },
+  "homepage": "https://github.com/sldelay/README_generator-#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "inquirer": "^7.0.4"
+  }
+}
