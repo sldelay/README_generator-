@@ -1,7 +1,7 @@
 
 ![last commit](https://img.shields.io/github/last-commit/sldelay/README_generator-)
 # README Generator
-The user will be prompted for their GitHub username, which will be used to make a call to the GitHub API to retrieve their email and profile image. They will then be prompted with questions about their project.
+This generator runs in node.js and allows a user to easily generate a good README for their repository. Having a clear README is very important to ensure that the application is easily understood.
 ![alt text](images/Screenshot.png)
 ## Table of Contents
 - [Installation](#Installation)
@@ -13,14 +13,14 @@ The user will be prompted for their GitHub username, which will be used to make 
 ## Installation 
 NPM Install
 ## Usage
-Generating READMEs
+This application can be used for easily generating a good README.
 ## Licensing
 MIT
 ## Contribution
-Fork the repository and then submit pull requests
+No contributions are being accepted at this time.
 ## Testing
-NPM Test
+No testing required!
 ## Questions
-null
+Email: samuel.delay@gmail.com
 ![alt txt](https://avatars0.githubusercontent.com/u/55762265?v=4)
     
